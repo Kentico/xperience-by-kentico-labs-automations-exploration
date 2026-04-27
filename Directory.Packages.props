@@ -10,6 +10,7 @@
     <PackageVersion Include="Kentico.Xperience.WebApp" Version="31.4.2" />
     <PackageVersion Include="kentico.xperience.azurestorage" Version="31.4.2" />
     <PackageVersion Include="kentico.xperience.imageprocessing" Version="31.4.2" />
+    <PackageVersion Include="kentico.xperience.mjml" Version="31.4.2" />
     <PackageVersion Include="SonarAnalyzer.CSharp" Version="10.20.0.135146" />
   </ItemGroup>
 </Project>
