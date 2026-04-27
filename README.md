@@ -10,8 +10,6 @@ This is part of the Kentico Community Portal article series: [Xperience Automati
 
 ### Dependencies
 
----These are all the dependencies required to use (not build) the library---
-
 - [ASP.NET Core 10.0](https://dotnet.microsoft.com/en-us/download)
 - [Xperience by Kentico](https://docs.kentico.com)
 
