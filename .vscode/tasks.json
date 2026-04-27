@@ -2,15 +2,6 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "type": "npm",
-      "script": "install",
-      "path": "src/Kentico.Xperience.RepoTemplate.Admin/Client",
-      "group": "build",
-      "problemMatcher": [],
-      "label": "npm: install - Admin/Client",
-      "detail": "install dependencies from package"
-    },
-    {
       "type": "dotnet",
       "task": "build",
       "problemMatcher": ["$msCompile"],
@@ -22,7 +13,7 @@
       "command": "dotnet",
       "args": [
         "format",
-        "Kentico.Xperience.RepoTemplate.slnx",
+        "AutomationsExploration.slnx",
         "--exclude",
         "./examples/**"
       ],
@@ -36,32 +27,6 @@
       "problemMatcher": ["$msCompile"],
       "group": "build",
       "label": "dotnet: clean"
-    },
-    {
-      "type": "npm",
-      "script": "build",
-      "path": "src/Kentico.Xperience.RepoTemplate.Admin/Client",
-      "group": "build",
-      "problemMatcher": [],
-      "label": "npm: build - Admin/Client",
-      "detail": "webpack --mode=production"
-    },
-    {
-      "type": "npm",
-      "script": "build:dev",
-      "path": "src/Kentico.Xperience.RepoTemplate.Admin/Client",
-      "group": "build",
-      "problemMatcher": [],
-      "label": "npm: build:dev - Admin/Client",
-      "detail": "webpack --mode=development"
-    },
-    {
-      "type": "npm",
-      "script": "start",
-      "path": "src/Kentico.Xperience.RepoTemplate.Admin/Client",
-      "problemMatcher": [],
-      "label": "npm: watch - Admin/Client",
-      "detail": "webpack serve --mode development"
     },
     {
       "label": "dotnet: watch DancingGoat",

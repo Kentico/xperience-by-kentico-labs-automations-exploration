@@ -1,0 +1,84 @@
+@model DancingGoat.Widgets.ConditionalCustomActivityWidgetViewModel
+
+@if (!Model.IsEditOrPreviewMode)
+{
+    return;
+}
+
+@if (Model.IsPreviewMode)
+{
+    <div style="padding: 1rem; border: 1px dashed #9aa0a6; background: #f8f9fa; border-radius: 4px; text-align: left;">
+        <p>This custom activity widget is <span style="color: @(Model.ExecuteWhen == "Disabled" ? "#d33b27" : "#0d652d");">
+            @(string.Equals(Model.ExecuteWhen, "Disabled", StringComparison.OrdinalIgnoreCase) ? "Disabled" : "Active" )
+            </span>
+        </p>
+    </div>
+    return;
+}
+
+<div style="padding: 1rem; border: 1px dashed #9aa0a6; background: #f8f9fa; border-radius: 4px; text-align: left;">
+    <strong style="display: block; margin-bottom: 0.75rem; color: #202124;">⚙️ Conditional Activity Logger</strong>
+
+    <div style="margin: 0.75rem 0; font-size: 0.95rem;">
+        <div style="margin-bottom: 0.5rem;">
+            <strong>Trigger condition:</strong>
+        </div>
+        <div style="margin-left: 1rem; color: #5f6368;">
+            @if (Model.ConditionType == "CustomActivity")
+            {
+                <div>
+                    📊 Contact performed activity: <strong>@(string.IsNullOrWhiteSpace(Model.ConditionActivityType) ? "(not configured)" : Model.ConditionActivityType)</strong>
+                    @if (!string.IsNullOrWhiteSpace(Model.ConditionActivityValue))
+                    {
+                        <div style="margin-top: 0.25rem; margin-left: 1rem;">
+                            With value: <strong>@Model.ConditionActivityValue</strong>
+                        </div>
+                    }
+                </div>
+            }
+            else if (Model.ConditionType == "ContactGroup")
+            {
+                <div>
+                    👥 Contact is in group: <strong>
+                    @(string.IsNullOrWhiteSpace(Model.ContactGroup)
+                        ? "(not configured)"
+                        : Model.ContactGroup)
+                </strong>
+            </div>
+        }
+            else
+        {
+            <div style="color: #d33b27;">
+                ⚠️ Unknown condition type: <strong>@Model.ConditionType</strong>
+            </div>
+        }
+    </div>
+</div>
+
+<div style="margin: 0.75rem 0; font-size: 0.95rem;">
+    <div style="margin-bottom: 0.5rem;">
+        <strong>Then log activity:</strong>
+    </div>
+    <div style="margin-left: 1rem; color: #5f6368;">
+        <div>
+            📝 Activity: <strong>@(string.IsNullOrWhiteSpace(Model.ActionActivityType) ? "(not configured)" :
+                                                                                                                                                            Model.ActionActivityType)</strong>
+            @if (!string.IsNullOrWhiteSpace(Model.ActionActivityValue))
+            {
+                <div style="margin-top: 0.25rem; margin-left: 1rem;">
+                    With value: <strong>@Model.ActionActivityValue</strong>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div style="margin: 0.75rem 0; padding-top: 0.75rem; border-top: 1px solid #dadce0; font-size: 0.95rem;">
+    <strong>Schedule:</strong>
+    <strong style="color: @(Model.ExecuteWhen == "Disabled" ? "#d33b27" : "#0d652d");">
+        @(string.IsNullOrWhiteSpace(Model.ExecuteWhen)
+            ? "Always"
+            : Model.ExecuteWhen)
+    </strong>
+</div>
+</div>
